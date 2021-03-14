@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "./store";
+import { useDispatch, useStore } from "./store";
 
 export const useInput = (initialValue = "") => {
   const [value, setValue] = useState(initialValue);
@@ -19,4 +19,20 @@ export const useLoginHandler = () => {
   };
 
   return loginHandler;
+};
+
+export const useLogoutHandler = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch({ type: "logout" });
+  };
+
+  return logoutHandler;
+};
+
+export const useUsername = () => {
+  const store = useStore();
+
+  return store?.username;
 };
