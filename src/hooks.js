@@ -36,3 +36,9 @@ export const useUsername = () => {
 
   return store?.username;
 };
+
+export const useAuth = () => {
+  const store = useStore();
+
+  return store?.auth;
+};
