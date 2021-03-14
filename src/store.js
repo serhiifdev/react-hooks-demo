@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 const StoreContext = createContext();
 
@@ -24,7 +24,13 @@ const reducer = (state, action) => {
 };
 
 export const StoreProvider = ({ children }) => {
-  const [store, dispatch] = useReducer(reducer, initialState);
+  const persistedState =
+    JSON.parse(window.localStorage.getItem("store")) ?? initialState;
+  const [store, dispatch] = useReducer(reducer, persistedState);
+
+  useEffect(() => {
+    window.localStorage.setItem("store", JSON.stringify(store));
+  }, [store]);
 
   return (
     <DispatchContext.Provider value={dispatch}>
