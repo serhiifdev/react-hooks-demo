@@ -1,8 +1,20 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const StoreContext = createContext();
 
 const DispatchContext = createContext();
+
+export const useStore = () => {
+  const store = useContext(StoreContext);
+
+  return store;
+};
+
+export const useDispatch = () => {
+  const dispatch = useContext(DispatchContext);
+
+  return dispatch;
+};
 
 const initialState = {};
 
