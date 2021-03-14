@@ -1,5 +1,11 @@
+import { StoreProvider } from "./store";
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <StoreProvider>
+      <div className="App"></div>;
+    </StoreProvider>
+  );
 }
 
 export default App;
